@@ -326,11 +326,16 @@ Let $U, U'$ be open sets with $U \cap U' \neq \emptyset$ and the sequences $(U_l
 
 * Claim 1-2 : The sequence $U'' = (U_k \cap U'_k, U_{k+1} \cap U'_{k+1}, ...)$ is an effective open exhaustion for $U \cap U'$
 
-    1.  Proof for property (1) of the definition of open exhaustion: $U' = \bigcup_{l = 1}^\infty U'_l:\\$
-
-    \color{red}
-    TODO
-    \color{black}
+    1.  Proof for property (1) of the definition of open exhaustion: i.e $U \cap U' = \bigcup_{l = k}^\infty (U''_l).\\$Starting at the LHS:$\\$
+    $x\in U \cap U'\\$
+    $\Leftrightarrow x \in \bigcup_{l=1}^\infty U_l \quad \land \quad x \in \bigcup_{l'=1}^\infty U_l'\\$
+    $\Leftrightarrow \exists l,l'>0 \quad x\in U_l \quad \land \quad x\in U'_{l'}\\$
+    Putting $l_{max} := max \{ l, l' \}$ and by property (3) of $(U_l), (U'_{l'}):\\$
+    $\Leftrightarrow \exists l_{max}>0 \quad x\in U_{l_{max}} \quad \land \quad x\in U'_{l_{max}}\\$
+    $\Leftrightarrow \exists l_{max}>0 \quad x\in U_{l_{max}} \cap U'_{l_{max}}\\$
+    $\Leftrightarrow x\in \bigcup_{l = 1}^\infty (U_l \cap U'_l)\\$
+    $\Leftrightarrow x\in \bigcup_{l = k}^\infty (U_l \cap U'_l )\\$
+    $\Leftrightarrow x\in \bigcup_{l = k}^\infty (U''_l)\\$
     
     2. Proof for property (2) of the definition of open exhaustion: For $l \in \mathbb{N}$, $(U'_l)$ is a *finite* union of non-empty finite open intervals $I'^l_i \quad i = 1, ..., k_l$ whose closures are pairwise *disjoint*.
 
@@ -338,7 +343,8 @@ Let $U, U'$ be open sets with $U \cap U' \neq \emptyset$ and the sequences $(U_l
     TODO
     \color{black}
 
-    3. Property (3) of the definition of open exhaustion: $\overline{g^{-1}(U_l)} = \bigcup^{\infty}_{i=1} \overline{I_i^l} \subseteq g^{-1}(U_{1+1})$ for $l=1,2, ...$
+    3. Property (3) of the definition of open exhaustion: 
+    $\\ \overline{g^{-1}(U_l)} = \bigcup^{\infty}_{i=1} \overline{I_i^l} \subseteq g^{-1}(U_{1+1})$ for $l=1,2, ...$
 
     Clear by construction. (miiight need some explanation)
 
