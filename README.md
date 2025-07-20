@@ -1,1 +1,1 @@
-This Repository contains the extended abstract and speaker notes for my talk at [CCC 2025](https://swansea-theory.github.io/conferences/CCC2025/index.html).
+This Repository contains the [extended abstract](https://github.com/sfzgzs/thesis/blob/main/CCC2025_extended_abstract.pdf) and speaker notes for my talk at [CCC 2025](https://swansea-theory.github.io/conferences/CCC2025/index.html).
