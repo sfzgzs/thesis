@@ -1,0 +1,57 @@
+\begin{frame}{Challenges}
+    \vspace{-1.5em}
+    \begin{theorem}[Acceptability Theorem: Part 1]
+        Let $f:\Reals\to\Reals$ be an elementary function. Then, $\dom(f)$ has an effective open exhaustion.
+    \end{theorem}
+    \pause
+    \vspace{-2em}
+    \begin{minipage}[t]{0.52\linewidth}
+        \begin{exampleblock}{\textbf{\textcolor{Mahogany}{First attempt --  Strengthening:}}\\ \textcolor{Blue}{Elementary function constructions preserve
+        the property that the domain has an effective open exhaustion.}}
+            \begin{itemize}
+            \setlength\itemsep{-2pt}
+                \pause\item Base cases \Checkmark (e.g. $\sin(x)$)
+                \pause\item Addition and multiplication \Checkmark (e.g. $(f+g)(x)$) 
+                \pause \item Composition case has a counterexample:
+                \pause \[ f(x) = \mathit{id}|_{(-1,1)}\text{ and } \pause  g(x) = 
+                        \begin{cases*}
+                            0 & if $-1\leq x \leq 1$ \\
+                            1 & otherwise
+                        \end{cases*}
+                \]
+                \pause$\dom(f)$ has an effective open exhaustion \Checkmark\\
+                \pause$\dom(g)$ has an effective open exhaustion \Checkmark\\
+                \pause$\dom(f\circ g) = [-1,1]$ has no open exhaustion \textcolor{Mahogany}{\XSolidBrush}
+            \end{itemize}
+        \end{exampleblock}
+    \end{minipage}
+    \hspace{1em}
+    \pause
+    \begin{minipage}[t]{0.44\linewidth}
+        \begin{exampleblock}{\textbf{\textcolor{BrickRed}{Strengthened to proving \textbf{exhaustion reflection property}}}}
+            \kern-1ex
+            For any open set $U$ with an effective open exhaustion, $f^{-1}(U)$ has an effective open exhaustion.\\
+            \pause
+            Proof: By induction 
+            \vspace{-0.5em}
+            \begin{itemize}
+                \setlength\itemsep{-5pt}
+                \pause\item Base cases \Checkmark
+                \pause\item Composition \Checkmark 
+                \pause \item Addition and multiplication \textcolor{Mahogany}{\XSolidBrush}
+            \end{itemize}
+        \end{exampleblock}
+        \vspace{-1em} \pause
+        \begin{exampleblock}{\textbf{\textcolor{OliveGreen}{Adding decomposition of $+$ and $\cdot$}}}
+        $(f+g)(x) = f(x)+g(x)$ is composed of
+        \begin{itemize}
+            \setlength\itemsep{-1pt}
+            \item $\mathit{Add}(x,y) = x + y$,
+            \item $(f\times g)(x,y) = (f(x),g(y))$, 
+            \item $\mathit{Diag}(x) = (x,x) \qquad$  \Checkmark \Checkmark
+        \end{itemize}
+        \end{exampleblock}
+    \end{minipage}
+    \note[itemize]{
+    \footnotesize One of the actual interesting challenges was the first part of the acceptability theorem. What we needed to prove was that for any elementary function, the domain has an effective open exhaustion. Our first attempt was of course proof by induction. The base cases, addition, and multiplication are all trivial. But the composition case does not work. Let us consider the two functions $f$ and $g$ here. $f$ is just the identity function, but its domain is restricted to $(-1,1)$. This is just an interval with rational endpoints, and hence has an obvious effective open exhaustion. The domain of $g$ is the reals and has the standard effective open exhaustion. But when we compose the two together to get $f\circ g$, the domain of $f\circ g$ is $[-1,1]$ which is no longer open. So in order to prove the theorem by induction, we had to strengthen the theorem into this exhaustion-reflection property here. This property says if we have an open set with an effective open exhaustion, then the pre-image of that set should have an effective open exhaustion as well. Proving this new property for all the elementary functions using induction, again base cases go through easily. Composition is made easy. But this time addition and multiplication are the problem. The idea that we used here, is to deconstruct the addition and similarly multiplicaion into the following functions and prove the exhaustion-reflection property for each of these functions. Note that before this deconstruction we did not deal with non-unary functions, but in order to use this method, we had to generalize the definition of an effective open exhaustion to more than one dimension, requiring us to also prove the exhaustion-reflection property for a generalized version of composition. }
+\end{frame}

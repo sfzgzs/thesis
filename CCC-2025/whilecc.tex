@@ -1,0 +1,49 @@
+\begin{frame}{Background -- \WhileCC($\mathcal{R}$) Programming Language}
+\setlength{\columnsep}{-0.5cm}
+\begin{multicols}{2}
+    \pause
+        \fbox{
+        \begin{tabular}{ll}
+             algebra & $\algebraR$ \\
+             carriers & $\Reals$, $\Nats$, $\Bools$ \\
+             functions & $\realZero$, $\realOne$, $\realMinusOne$ : $\ \totalTo \mathbb{R}$ \\
+              & $\realPlus$, $\realTimes$ : $\Reals\times\Reals\totalTo\Reals$\\
+              & $\natPlus$, $\natTimes$ : $\Nats\times\Nats\totalTo\Nats$\\
+              
+              & $\realInv$ : $\Reals\to\Reals$ \\
+              & $\natZero$ : $\ \totalTo \Nats$ \\
+              & $\natSuc$ : $\Nats\totalTo\Nats$ \\
+              & $\true$, $\false$ : $\ \totalTo\Bools$ \\ 
+              & $\boolAnd$, $\boolOr$ : $\Bools\times\Bools\totalTo\Bools$ \\
+              & $\boolNot$ : $\Bools\totalTo\Bools$ \\
+              & $\natEq$, $\natLess$ : $\Nats\times\Nats\totalTo\Bools$ \\
+              & \textcolor{violet}{$\mathsf{=_R}$, $\realLess$} : $\Reals\times\Reals \textcolor{violet}{\to{}}\Bools$ 
+        \end{tabular}   
+        }\\
+        \edcomm{FG}{todo: put an arrow here pointing to the colored text, explaining partiality}
+        % \vline{}
+        \vfill\null
+        \columnbreak
+        \begin{itemize}
+            \pause \item Variables from $\Reals$, $\Nats$, $\Bools$ 
+            \pause \item Terms
+                    \[ t^s ::= x^s\ \mid F(t_1^{s_1}, \ldots , t_m^{s_m}) \]
+            \pause \item Statements
+                \begin{align*}
+                    S ::=& \ \mathsf{skip}\
+                            \mid \mathsf{div}
+                            \mid \bar{x} := \bar{t}
+                            \mid S_1\ S_2\\
+                            &\mid \mathsf{if}\ b \ \mathsf{then}\ S_1 \ \mathsf{else}\ S_2\ \mathsf{fi}\ \\
+                            &\mid \mathsf{while}\ b\ \mathsf{do}\ S_0\ \mathsf{od}
+                            \\
+                            &\mid n:= \mathsf{choose\ } (z: \nat): P(z,\bar{t})
+                \end{align*}
+            \pause \item Procedures
+                \begin{center}
+                    $P$ ::= $\mathsf{proc} \ D\ \mathsf{begin}\ S\ \mathsf{end}$
+                \end{center}
+                    
+        \end{itemize}
+    \end{multicols}
+\end{frame}

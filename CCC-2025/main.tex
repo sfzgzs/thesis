@@ -1,0 +1,68 @@
+\documentclass[
+handout, 
+aspectratio=169,
+notes,
+t]
+{beamer}
+% \setbeameroption{show notes on second screen=bottom} % Both
+\setbeameroption{hide notes}
+% \setbeamertemplate{note page}{\pagecolor{yellow!10}\insertnote}\usepackage{palatino}
+
+\setbeamercovered{transparent}
+\usepackage{tikz}
+\usetheme{CambridgeUS}
+% \usetheme{metropolis}
+\usecolortheme{dolphin}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[page number]
+\setbeamertemplate{headline}
+
+\usepackage{multicol}
+\usepackage{natbib}
+\usepackage{doi}
+\usepackage{hyperref}
+\hypersetup{colorlinks, allcolors=Blue}
+\usepackage[normalem]{ulem}
+\input{definitions}
+\usepackage{amsmath, mathtools}
+\usepackage{bbding}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{edcomms}
+\usepackage{wasysym}
+
+\title{\WhileCC-approximability and Acceptability of Elementary Functions}
+\author{Fateme Ghasemi \and Dr. Jeffery Zucker\\
+ghases5@mcmaster.ca \and zucker@mcmaster.ca}
+\date{September 2025}
+\titlegraphic{\includegraphics[width=2cm]{mcmaster-logo.png}
+}
+\usefonttheme[onlymath]{serif}
+\usepackage{etoolbox}
+\setbeamertemplate{theorem begin}[normal font]
+
+\begin{document}
+
+\small
+\maketitle
+\section{Introduction}
+    % \input{abstract-vs-concrete}
+    \input{total-and-partial}
+    % \input{problem}
+\section{Background}
+    % \input{whilecc}
+    \input{background}
+\section{Problem}
+    \input{elementary-functions}
+\section{Contributions}
+    \input{contribution-list}
+    \input{contribution1}
+\section{Challenges}
+    \input{challenges1}
+    \input{challenges2}
+\section{Summary and Future Work}
+    \input{takeaways}
+    \input{summary}
+    \input{future-work}
+    \input{references}
+    \input{thanks}
+\end{document}

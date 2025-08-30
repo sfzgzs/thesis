@@ -1,0 +1,32 @@
+\begin{frame}{Computability of Functions on $\Reals$}
+\vspace{-1em}
+    \pause
+    \textbf{For total functions on $\Reals$}\pause, the following models of computation are equivalent \pause for all functions that are effectively locally uniformly continuous \citep{ComputableTotalFunctionsOnMetricAlgebras_JohnTuckerAndJeffZucker}:
+    \begin{itemize}
+        \item GL-computability,
+        \item tracking computability,
+        \item multipolynomial
+        approximability, and
+        \item \WhileCC-approximability.
+    \end{itemize}
+    \pause What about \textbf{\textcolor{Sepia}{partial}} functions? $1/x$, $\sqrt[n]{x}$, \ldots
+    \pause
+    
+    \vspace{1em}
+    \textbf{For partial functions on $\Reals$}, \citet{ModelOfCompForPartFunc_MingQuanFuAndJeffZucker} generalize effectively locally uniform continuity to \textbf{\textcolor{violet}{acceptability}} to get an equivalence.\\
+    \pause
+     \begin{exampleblock}{\textbf{\textcolor{BrickRed}{Problem}}}
+        How general is this class of acceptable functions?
+     \end{exampleblock}
+     \pause
+     \begin{exampleblock}{\textbf{Useful First Step Towards Solution}}
+         Show that the elementary functions satisfy the acceptability conditions. 
+     \end{exampleblock}
+    \note[item]{In this presentation, we will talk about computability on real numbers. For total functions, it's proven that when we talk about effective locally uniform continuous functions, these models of computation agree on the class of computable functions. The precise definition of effective local uniform continuity will not be given here since it's not relevant to the rest of this presentation.}
+    \note[item]{But how about partial functions? There are many useful functions that we expect should be computable in any model.}
+    \note[item]{There is a generalization of this concept of effective local uniform continuity, called acceptability, given by Fu and Zucker. Under this generalization, the same models are proven to be equivalent for partial functions. }
+    \note[item]{Now the problem that we want to solve, is to see how general this acceptability condition is. We show that acceptability is at least general enough to include all elementary functions.}
+\end{frame}
+
+
+ 

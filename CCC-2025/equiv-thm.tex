@@ -1,0 +1,31 @@
+\begin{frame}{Motivation}
+
+    % \begin{theorem}[Equivalence Theorem, \citep{ModelOfCompForPartFunc_MingQuanFuAndJeffZucker}]
+    % For any \textcolor{violet}{acceptable function} $f:\Reals\to\Reals$ and any \textcolor{olive}{effective open exhaustion} $X$ for $\dom(f)$, the following are equivalent:
+    %     \pause \begin{itemize}
+    %         \item $f$ is an $\alpha$-computable function.
+    %         \item $f$ is \WhileCC-approximable.
+    %         \item $f$ is GL-computable w.r.t. $X$.
+    %         \item $f$ is effectively locally uniformly multipolynomially approximable w.r.t. $X$.
+    %     \end{itemize}
+    % \end{theorem}
+    % \pause
+    \begin{definition}[\textcolor{olive}{Effective Open Exhaustion}, \citep{ModelOfCompForPartFunc_MingQuanFuAndJeffZucker}]
+        \pause A sequence $(U_1, U_2, \ldots)$ of open sets is called an \textit{effective open exhaustion} for an open set $U\subseteq \Reals$ if 
+        \pause \begin{enumerate}
+                \item $ U = \bigcup_{l=0}^\infty U_l$, and
+                \pause\item for each $l \in \Nats$,
+                  $U_l$ is a finite union of non-empty open finite intervals $I_1^l, I_2^l,...,I_{k_l}^l $ whose closures are pairwise disjoint, and
+                \pause\item for each $l \in \Nats$,
+                   $\overline{U_l} = \bigcup_{i=1}^{k_l} \overline{I_i^l} \subseteq U_{l+1}$.
+                \pause\item 
+                for all $l$, the components $I_i^l$ that are intervals  building up the stage $U_l$, are \textit{rational} and \textit{ordered} i.e., $I_i^l = (a_i^l, b_i^l)$ for some $a_i^l, b_i^l \in \Rationals$ where $b_i^l < a_{i+1}^l$ for $i=1,...,k_l-1$, and
+                \pause\item the map
+                \[l\mapsto ( a_1^l , b_1^l, ...,
+                 a_{k_l}^l, b_{k_l}^l) \]
+                which delivers the sequence of stages $U_l = I_1^l\cup ...\cup I_{k_l}^l$ is recursive.
+        \end{enumerate}
+    \end{definition}
+\end{frame}
+
+
