@@ -1,0 +1,158 @@
+
+\begin{frame}{Challenges - \WhileCC-approximability Theorem - Background}
+    \pause
+    \footnotesize
+    \begin{minipage}[t]{0.33\linewidth}
+        \vspace{0.05em}
+        \textbf{\color{Blue}{\WhileCC} Programming Language}
+        {\textcolor{OliveGreen}{\textbf{ }}}
+         \begin{itemize}
+                \vspace{0.5em}
+                \pause \item Terms
+                \vspace{-0.5em}
+                        \begin{align*}
+                         t^s ::= x^s\ \mid F(t_1^{s_1}, \ldots , t_m^{s_m})
+                        \end{align*}
+                \vspace{-2.7em}
+                \pause \item Statements
+                \vspace{-0.5em}
+                    \begin{align*}
+                        &S ::=\\
+                                &\ \mathsf{skip}\
+                                \mid \mathsf{div}
+                                \mid \bar{x} := \bar{t}
+                                \mid S_1\ S_2\\
+                                &\mid \mathsf{if}\ b \ \mathsf{then}\ S_1 \ \mathsf{else}\ S_2\ \mathsf{fi}\ \\
+                                &\mid \mathsf{while}\ b\ \mathsf{do}\ S_0\ \mathsf{od}
+                                \\
+                                &\mid n:= \textcolor{BrickRed}{\mathsf{choose\ }} (z: \nat): P(z,\bar{t})
+                    \end{align*}
+                \vspace{-1.7em}
+                \pause \item Procedures
+                    \begin{center}
+                        $P$ ::= $\mathsf{proc} \ D\ \mathsf{begin}\ S\ \mathsf{end}$
+                    \end{center}
+                        
+            \end{itemize}
+    \end{minipage}
+    \begin{minipage}[t]{0.34\linewidth}
+         \pause 
+         \begin{center}
+             \textbf{\color{Blue}Algebra $\algebraR$}
+         \end{center}
+         \begin{center}
+            \fbox{
+            \begin{tabular}{ll}
+                 & $\Reals$, $\Nats$, $\Bools$ \\
+                 & $\realZero$, $\realOne$, $\realMinusOne$ : $\ \totalTo \mathbb{R}$ \\
+                  & $\realPlus$, $\realTimes$ : $\Reals\times\Reals\totalTo\Reals$\\
+                  & $\natPlus$, $\natTimes$ : $\Nats\times\Nats\totalTo\Nats$\\
+                  & {\color{BrickRed} $\realInv$ : $\Reals\ \to\ \Reals$} \\
+                  & $\natZero$ : $\ \totalTo \Nats$ \\
+                  & $\natSuc$ : $\Nats\totalTo\Nats$ \\
+                  & $\true$, $\false$ : $\ \totalTo\Bools$ \\ 
+                  & $\boolAnd$, $\boolOr$ : $\Bools\times\Bools\totalTo\Bools$ \\
+                  & $\boolNot$ : $\Bools\totalTo\Bools$ \\
+                  & $\natEq$, $\natLess$ : $\Nats\times\Nats\totalTo\Bools$ \\
+                  & {\color{BrickRed} $\mathsf{=_{real}}$, $\realLess$ : $\Reals\times\Reals \ \to\ \Bools$} 
+            \end{tabular}    
+            }
+        \end{center}
+        
+    \end{minipage}
+    \begin{minipage}[t]{0.30\linewidth}
+        \pause
+        \begin{center}
+             \vspace{1em}
+         \end{center}            
+            \begin{align*}
+            \realInv(x) = &
+                \begin{cases*}
+                    1/x & if $x \neq 0$\\
+                    {\color{BrickRed}\uparrow} & {\color{BrickRed}otherwise}
+                \end{cases*}\\
+            \mathsf{=_{real}}(x,y) = &
+                \begin{cases*}
+                    \false\ & if $x \neq y$\\
+                    {\color{BrickRed} \uparrow\ }& {\color{BrickRed} otherwise}
+                \end{cases*}\\
+            \realLess(x,y) = &
+                \begin{cases*}
+                    \true\ & if $x<y$\\
+                    \false\ & if $x>y$\\
+                    {\color{BrickRed}\uparrow} & {\color{BrickRed} if $x=y$}\\
+                \end{cases*}
+            \end{align*}
+        \setlength{\fboxsep}{0pt}
+        \fbox{
+        \begin{tabular}{l}
+            The Semantics of a program $P$\\
+            is denoted by a many-valued\\
+        function $P^\algebraR$.
+        \end{tabular}
+        }
+    \end{minipage}
+    \note[itemize]{
+    The functions commonly known as inverse, equality and order are not continuous.
+    Since the concepts of \While{}-computability and \WhileCC-computability
+    We are using here have been designed to make all expressed functions continuous on their domains \citep{ComputableFunctionsAndSemicomputableSetsOnManySortedAlgebras-TuckerAndZucker_Handbook_2001, AbstractVSConcreteComputationOnMetricPartialAlgebras_TuckerZucker_2004},
+    the discontinuities in conventional models of equality, order, and inverse
+    have been resolved by making the functions in $\mathcal{R}$ undefined there.
+    }
+        
+\end{frame}
+
+
+\begin{frame}{Challenges - \WhileCC-approximability Theorem - Background}
+    \pause
+    \begin{definition}[\WhileCC-approximability, \citep{ModelOfCompForPartFunc_MingQuanFuAndJeffZucker}]
+\label{def::whileCC-approximable}
+    A \WhileCC-procedure $P$ of type $\real\times\nat \to \real$ on $\algebraR$ is said to \textit{approximate} a function $f:\Reals\to\Reals$ iff for all $n\in \Nats$ and all $x\in \Reals$:
+    \begin{itemize}
+        \pause \item $x \in \dom(f) \then \emptyset \neq P^\algebraR(x,n) $ \pause $\subseteq \Nbd(f(x), 2^{-n})$
+            , and
+        \pause \item $x \notin \dom(f) \then P^\algebraR(x)=\emptyset$
+    \end{itemize}
+    \pause where $\Nbd(y,r)$ has the standard definition of neighborhood on $\Reals$ i.e., \[\Nbd(y,r) = \{ z\in \Reals\ \mid \abs{y-z}<r \}.\]
+\end{definition}
+
+     \begin{exampleblock}{\textbf{\textcolor{OliveGreen}{Goal}}}
+         Construct \WhileCC-procedures approximating elementary functions by induction
+     \end{exampleblock}
+     
+     \begin{exampleblock}{\textcolor{BrickRed}{\textbf{Challenges:} Using comparison operators introduces undefinedness.}}
+        \pause How do we \WhileCC-approximate ``piecewise'' functions?
+     \end{exampleblock}
+
+    \note[itemize]{Let us start with a more formal definition. We already defined the \WhileCC programming language earlier, but what does it mean for a function to be \WhileCC-approximable?\\
+    The semantics for \WhileCC-programs is a multi-valued function. Now let's say $P$ is a \WhileCC-procedure with a real and a precision variable in \Nats as inputs. It is said to approximate a function $f$ on the reals if for any input in the domain of $f$, it gives us a nonempty set of values all close enough to $f(x)$. The definition of closeness (here, neighborhood) is the standard definition of neighborhood on the reals. }
+\end{frame}
+
+\begin{frame}{Challenges - \WhileCC-approximability Theorem}
+    \begin{minipage}[t]{0.43\linewidth}
+        \begin{exampleblock}{\color{BrickRed}\textbf{Problem}}
+            When defining piecewise functions, comparison makes a hole! 
+        \end{exampleblock}
+        \pause
+        \begin{exampleblock}{\textbf{Solution}}
+            \begin{itemize}
+                \item Find an overlapping interval where both pieces are defined
+                \item Use the nondeterminism of ``choose''  
+            \end{itemize}
+            \pause
+            {\textbf{\color{OliveGreen}Example: Even Root}\\}
+            {
+                % \footnotesize
+                \pause
+                Assuming we have $\isCloseEnough(q,c,n) \implies \abs{\sqrt[c]{q}} < 2^{-n}$
+            }
+            
+        \end{exampleblock}
+    \end{minipage}
+    \begin{minipage}[t]{0.55\linewidth}
+        \vspace{-2em}
+        \pause
+        \includegraphics[width=.98\linewidth]{even-root.png}
+    \end{minipage}
+
+\end{frame}
