@@ -1,11 +1,12 @@
 
-\begin{frame}{Challenges - \WhileCC-approximability Theorem - Background}
+\begin{frame}{Result 1 - Background - \WhileCC\ Programming Language}
     \pause
     \footnotesize
     \begin{minipage}[t]{0.33\linewidth}
         \vspace{0.05em}
-        \textbf{\color{Blue}{\WhileCC} Programming Language}
-        {\textcolor{OliveGreen}{\textbf{ }}}
+       \center
+        \textbf{\color{Blue}{Syntax}
+        }
          \begin{itemize}
                 \vspace{0.5em}
                 \pause \item Terms
@@ -38,12 +39,12 @@
     \begin{minipage}[t]{0.34\linewidth}
          \pause 
          \begin{center}
+            \vspace{0.2em}
              \textbf{\color{Blue}Algebra $\algebraR$}
          \end{center}
          \begin{center}
             \fbox{
             \begin{tabular}{ll}
-                 & $\Reals$, $\Nats$, $\Bools$ \\
                  & $\realZero$, $\realOne$, $\realMinusOne$ : $\ \totalTo \mathbb{R}$ \\
                   & $\realPlus$, $\realTimes$ : $\Reals\times\Reals\totalTo\Reals$\\
                   & $\natPlus$, $\natTimes$ : $\Nats\times\Nats\totalTo\Nats$\\
@@ -63,7 +64,8 @@
     \begin{minipage}[t]{0.30\linewidth}
         \pause
         \begin{center}
-             \vspace{1em}
+             \vspace{0.2em}
+             \textbf{\color{Blue}{Semantics} }
          \end{center}            
             \begin{align*}
             \realInv(x) = &
@@ -103,7 +105,7 @@
 \end{frame}
 
 
-\begin{frame}{Challenges - \WhileCC-approximability Theorem - Background}
+\begin{frame}{Result 1 - Background}
     \pause
     \begin{definition}[\WhileCC-approximability, \citep{ModelOfCompForPartFunc_MingQuanFuAndJeffZucker}]
 \label{def::whileCC-approximable}
@@ -120,7 +122,7 @@
          Construct \WhileCC-procedures approximating elementary functions by induction
      \end{exampleblock}
      
-     \begin{exampleblock}{\textcolor{BrickRed}{\textbf{Challenges:} Using comparison operators introduces undefinedness.}}
+     \begin{exampleblock}{\textcolor{BrickRed}{\textbf{Challenge:} Using comparison operators introduces undefinedness.}}
         \pause How do we \WhileCC-approximate ``piecewise'' functions?
      \end{exampleblock}
 
@@ -128,7 +130,7 @@
     The semantics for \WhileCC-programs is a multi-valued function. Now let's say $P$ is a \WhileCC-procedure with a real and a precision variable in \Nats as inputs. It is said to approximate a function $f$ on the reals if for any input in the domain of $f$, it gives us a nonempty set of values all close enough to $f(x)$. The definition of closeness (here, neighborhood) is the standard definition of neighborhood on the reals. }
 \end{frame}
 
-\begin{frame}{Challenges - \WhileCC-approximability Theorem}
+\begin{frame}{Result 1 - Challenges}
     \begin{minipage}[t]{0.4\linewidth}
         \vspace{-2em}
         \begin{exampleblock}{\color{BrickRed}\textbf{Problem}}
@@ -173,7 +175,7 @@
 \end{frame}
 
 
-\begin{frame}{Challenges - \WhileCC-approximability Theorem}
+\begin{frame}{Result 1 - Challenges}
     \begin{minipage}[t]{0.4\linewidth}
         \vspace{-2em}
         \begin{exampleblock}{\color{BrickRed}\textbf{Problem}}

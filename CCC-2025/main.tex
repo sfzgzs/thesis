@@ -42,6 +42,19 @@ ghases5@mcmaster.ca \and zucker@mcmaster.ca}
 \usepackage{etoolbox}
 \setbeamertemplate{theorem begin}[normal font]
 
+\let\originalnewtheorem\newtheorem
+\RenewDocumentCommand{\newtheorem}{ommo}{%
+  \originalnewtheorem{#2inner}{#3\thisthmnumber}
+  \NewDocumentEnvironment{#2}{od()}
+   {%
+    \IfValueT{##2}{\renewcommand{\thisthmnumber}{ ##2}}%
+    \IfValueTF{##1}{\begin{#2inner}[##1]}{\begin{#2inner}}%
+   }
+   {\end{#2inner}}
+}
+\newcommand{\thisthmnumber}{}
+\newtheorem{ntheorem}{Theorem}
+
 \begin{document}
 
 \small
