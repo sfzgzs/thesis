@@ -75,4 +75,25 @@
 
 \newcommand\isCloseEnough{\mathsf{isCloseEnough}}
 
-    
+    \newcommand\BLOCK[1]{
+    \begin{array}[t]{@{}l@{}}
+        #1
+    \end{array}}
+\newcommand\INDENT[1]{\quad\BLOCK{#1}}
+
+\newcommand\PROC{\textcolor{blue}{\mathsf{proc}}\ }
+\newcommand\BEGIN{\textcolor{blue}{\mathsf{begin}}\ }
+\newcommand\END{\textcolor{blue}{\mathsf{end}}\ }
+\newcommand\IN{\textcolor{blue}{\mathsf{in}}\ }
+\newcommand\OUT{\textcolor{blue}{\mathsf{out}}\ }
+\newcommand\AUX{\textcolor{blue}{\mathsf{aux}}\ }
+\newcommand\CHOOSE{\textcolor{blue}{\mathsf{choose}}\ }
+\newcommand\IF{\textcolor{blue}{\mathsf{if}}\ }
+\newcommand\THEN{\ \textcolor{blue}{\mathsf{then}}\ }
+\newcommand\ELSE{\textcolor{blue}{\mathsf{else}}\ }
+\newcommand\FI{\textcolor{blue}{\mathsf{fi}}\ }
+\newcommand\WHILE{\textcolor{blue}{\mathsf{while}}\ }
+\newcommand{\DO}{\textcolor{blue}{\ \mathsf{do}}\ }
+\newcommand{\OD}{\textcolor{blue}{\mathsf{od}}\ }
+\newcommand{\RETURN}{\textcolor{blue}{\mathsf{return}}\ }
+\newcommand\COMMENT[1]{\textnormal{\textcolor{teal}{/* #1 */}}}

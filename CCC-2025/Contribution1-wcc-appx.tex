@@ -109,7 +109,7 @@
 \label{def::whileCC-approximable}
     A \WhileCC-procedure $P$ of type $\real\times\nat \to \real$ on $\algebraR$ is said to \textit{approximate} a function $f:\Reals\to\Reals$ iff for all $n\in \Nats$ and all $x\in \Reals$:
     \begin{itemize}
-        \pause \item $x \in \dom(f) \then \emptyset \neq P^\algebraR(x,n) $ \pause $\subseteq \Nbd(f(x), 2^{-n})$
+        \pause \item $x \in \dom(f) \then \emptyset \neq P^\algebraR(x,n) $ \pause  $\subseteq \Nbd(f(x), 2^{-n})$
             , and
         \pause \item $x \notin \dom(f) \then P^\algebraR(x)=\emptyset$
     \end{itemize}
@@ -129,30 +129,126 @@
 \end{frame}
 
 \begin{frame}{Challenges - \WhileCC-approximability Theorem}
-    \begin{minipage}[t]{0.43\linewidth}
+    \begin{minipage}[t]{0.4\linewidth}
+        \vspace{-2em}
         \begin{exampleblock}{\color{BrickRed}\textbf{Problem}}
             When defining piecewise functions, comparison makes a hole! 
         \end{exampleblock}
         \pause
-        \begin{exampleblock}{\textbf{Solution}}
-            \begin{itemize}
-                \item Find an overlapping interval where both pieces are defined
-                \item Use the nondeterminism of ``choose''  
-            \end{itemize}
-            \pause
-            {\textbf{\color{OliveGreen}Example: Even Root}\\}
-            {
-                % \footnotesize
-                \pause
-                Assuming we have $\isCloseEnough(q,c,n) \implies \abs{\sqrt[c]{q}} < 2^{-n}$
-            }
-            
-        \end{exampleblock}
-    \end{minipage}
-    \begin{minipage}[t]{0.55\linewidth}
-        \vspace{-2em}
+        \vspace{0.75em}
+        {\textbf{\color{MidnightBlue}Example: Even Root} \pause \textbf{\color{BrickRed} - First Attempt}\\}
+        \footnotesize
+        \vspace{-1em}
+        \[ 
+            \BLOCK{
+            \PROC  \\
+                \INDENT{
+                \IN\ x:\real\ c:\nat}\\
+            \BEGIN \\
+                \INDENT{
+                \IF x \realLess 0 \THEN \\
+                    \INDENT{
+                    \RETURN 0}\\
+                \ELSE \\
+                    \INDENT{
+                    \RETURN \mathsf{Root}(x,c)}\\
+                \FI \\
+
+                }\\
+            \END}\\
+        \] 
         \pause
-        \includegraphics[width=.98\linewidth]{even-root.png}
+        \begin{flushright}
+        % \includegraphics[width=.98\linewidth]{root.png}
+            \vspace{-3em}
+            \pause
+            \input{tikz/root-attempt1}
+        \end{flushright}
+    \end{minipage}
+    \begin{minipage}[t]{0.50\linewidth}
+      
+              
+    \end{minipage}
+
+\end{frame}
+
+
+\begin{frame}{Challenges - \WhileCC-approximability Theorem}
+    \begin{minipage}[t]{0.4\linewidth}
+        \vspace{-2em}
+        \begin{exampleblock}{\color{BrickRed}\textbf{Problem}}
+            When defining piecewise functions, comparison makes a hole! 
+        \end{exampleblock}
+        \pause
+        \vspace{0.75em}
+         \begin{exampleblock}{\textbf{Solution}}
+            \begin{itemize}
+                \pause \item Find an overlapping interval where both pieces are defined
+                \pause \item Use the nondeterminism of ``choose''  
+            \end{itemize}
+            % Assuming we have $\isCloseEnough(q,c,n) \implies \abs{\sqrt[c]{q}} < 2^{-n}$ 
+            \pause
+                       
+        \end{exampleblock}     
+
+        \pause
+    \end{minipage}
+    \begin{minipage}[t]{0.50\linewidth}
+        % \vspace{-2em}
+        \pause
+        {
+        \vspace{-1.5em}
+        \center
+        }
+        \vspace{-1em}
+        \scriptsize
+         \[ 
+            \BLOCK{             
+                \PROC  \\
+                    \INDENT{
+                    \IN \ x:\real\ c:\nat \\
+                    \AUX \chosenVal:\nat\ l:\real}\\
+                \BEGIN \\
+                    \INDENT{
+                    l := \CHOOSE (q:\real) :
+                                        \BLOCK{
+                                        \isCloseEnough(q, c, n)} \\
+                     \\
+                    \chosenVal := \CHOOSE (k : \nat) :
+                            \BLOCK{
+                            \PROC \\
+                                \INDENT{
+                                \IN k:\nat\ x:\real}\\
+                            \BEGIN \\
+                                \INDENT{
+                                \IF k \natEq 1 \THEN \\
+                                    \INDENT{
+                                    \RETURN 0<x}\\
+                                \ELSE \IF k \natEq 2 \THEN \\
+                                    \INDENT{
+                                    \RETURN x<l}\\
+                                \ELSE \\
+                                    \INDENT{
+                                    \RETURN \false}\\
+                                \FI }\\
+                            \END}\\
+                    \IF \chosenVal \natEq 1 \THEN \\
+                        \INDENT{
+                        \RETURN \mathsf{Root}(x,c)}\\
+                    \ELSE \IF \chosenVal \natEq 2 \THEN \\
+                        \INDENT{
+                        \RETURN 0}\\
+                    \FI}\\
+                \END}\\
+            \] 
+        \pause
+        \begin{flushright}
+        % \includegraphics[width=.98\linewidth]{root.png}
+            \vspace{-8.5em}
+            \pause
+            \input{tikz/root-solution}
+        \end{flushright}
+        
     \end{minipage}
 
 \end{frame}
