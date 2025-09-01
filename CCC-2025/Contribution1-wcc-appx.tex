@@ -3,12 +3,11 @@
     \pause
     \footnotesize
     \begin{minipage}[t]{0.33\linewidth}
-        \vspace{0.05em}
+        \vspace{-1.8em}
        \center
         \textbf{\color{Blue}{Syntax}
         }
          \begin{itemize}
-                \vspace{0.5em}
                 \pause \item Terms
                 \vspace{-0.5em}
                         \begin{align*}
@@ -39,7 +38,7 @@
     \begin{minipage}[t]{0.34\linewidth}
          \pause 
          \begin{center}
-            \vspace{0.2em}
+            \vspace{-1.8em}
              \textbf{\color{Blue}Algebra $\algebraR$}
          \end{center}
          \begin{center}
@@ -64,7 +63,7 @@
     \begin{minipage}[t]{0.30\linewidth}
         \pause
         \begin{center}
-             \vspace{0.2em}
+             \vspace{-1.8em}
              \textbf{\color{Blue}{Semantics} }
          \end{center}            
             \begin{align*}
@@ -94,6 +93,28 @@
         \end{tabular}
         }
     \end{minipage}
+    \pause
+    \begin{minipage}[t]{0.67\linewidth}
+        \vspace{-1.3em}
+        \begin{table}[]
+            \centering
+            \begin{tabular}{|c|c|}
+                \hline
+                Statement & Possible Values for $n$ \\
+                \hline
+                \hline
+                $n := \CHOOSE\ (k : \nat) : k < 0$ & $\{\uparrow \}$\\
+                \hline
+                \pause $n := \CHOOSE\ (k : \nat) : \mathsf{toReal}(k) = 0$ & $\{\uparrow \}$\\
+                \hline
+                \pause $n := \CHOOSE\ (k : \nat) : k < k + 1$ & $\{0,1,2,\cdots\}$ \\
+                \hline
+                \pause $n := \CHOOSE (k : \nat) : k > 2\ \mathsf{and}\ k<4$ & $\{3 \}$\\
+                \hline
+            \end{tabular}
+            \label{tab:placeholder}
+        \end{table}
+    \end{minipage}
     \note[itemize]{
     The functions commonly known as inverse, equality and order are not continuous.
     Since the concepts of \While{}-computability and \WhileCC-computability
@@ -104,25 +125,24 @@
         
 \end{frame}
 
-
 \begin{frame}{Result 1 - Background}
     \pause
     \begin{definition}[\WhileCC-approximability, \citep{ModelOfCompForPartFunc_MingQuanFuAndJeffZucker}]
 \label{def::whileCC-approximable}
     A \WhileCC-procedure $P$ of type $\real\times\nat \to \real$ on $\algebraR$ is said to \textit{approximate} a function $f:\Reals\to\Reals$ iff for all $n\in \Nats$ and all $x\in \Reals$:
     \begin{itemize}
-        \pause \item $x \in \dom(f) \then \emptyset \neq P^\algebraR(x,n) $ \pause  $\subseteq \Nbd(f(x), 2^{-n})$
+        \pause \item $x \in \dom(f) \then \uparrow \notin P^\algebraR(x,n) $ \pause  $\subseteq \Nbd(f(x), 2^{-n})$
             , and
-        \pause \item $x \notin \dom(f) \then P^\algebraR(x)=\emptyset$
+        \pause \item $x \notin \dom(f) \then P^\algebraR(x)=\{ \uparrow\} $
     \end{itemize}
     \pause where $\Nbd(y,r)$ has the standard definition of neighborhood on $\Reals$ i.e., \[\Nbd(y,r) = \{ z\in \Reals\ \mid \abs{y-z}<r \}.\]
 \end{definition}
 
-     \begin{exampleblock}{\textbf{\textcolor{OliveGreen}{Goal}}}
+     \pause \begin{exampleblock}{\textbf{\textcolor{OliveGreen}{Goal}}}
          Construct \WhileCC-procedures approximating elementary functions by induction
      \end{exampleblock}
      
-     \begin{exampleblock}{\textcolor{BrickRed}{\textbf{Challenge:} Using comparison operators introduces undefinedness.}}
+     \pause \begin{exampleblock}{\textcolor{BrickRed}{\textbf{Challenge:} Using comparison operators introduces undefinedness.}}
         \pause How do we \WhileCC-approximate ``piecewise'' functions?
      \end{exampleblock}
 
@@ -183,7 +203,7 @@
         \end{exampleblock}
         \pause
         \vspace{0.75em}
-         \begin{exampleblock}{\textbf{Solution}}
+         \begin{exampleblock}{\color{OliveGreen}\textbf{Solution}}
             \begin{itemize}
                 \pause \item Find an overlapping interval where both pieces are defined
                 \pause \item Use the nondeterminism of ``choose''  
