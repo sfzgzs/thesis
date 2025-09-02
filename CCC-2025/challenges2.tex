@@ -1,26 +1,31 @@
-\begin{frame}{Challenges}
+\begin{frame}{Result 2}
     \pause
     \vspace{-1.5em}
     \begin{ntheorem}[Acceptability Theorem: Part 2](2.2)
         Any elementary function is effectively locally uniformly continuous \textbf{\textcolor{BrickRed}{w.r.t.\null{} an effective open exhaustion}} for its domain.
     \end{ntheorem}
     \pause
-    \begin{exampleblock}{\textbf{(We prove that this is) equivalent to proving:}}
+    \vspace{-0.5em}
+    \begin{exampleblock}{\color{OliveGreen}\textbf{(We prove that this is) equivalent to proving:}}
         Any elementary function has a local continuity witness.
     \end{exampleblock}
     \pause
+    \vspace{-0.5em}
     \begin{definition}[Local continuity witness]
         Let $f:\Reals\to\Reals$. A recursive function $N:\Rationals\times\Rationals\times\Nats\to\Nats$ is called a \textbf{local continuity witness} for $f$\index{local continuity witness} iff for any $a,b\in\Rationals$ with $[a,b]\subseteq\dom(f)$ and $k\in\Nats$, we have
         \[ 
             \forall x,y \in (a,b) \quad \abs{x-y}<2^{-N(a,b,k)} \then \abs{f(x)-f(y)}<2^{-k}.
         \] 
     \end{definition}
-    \pause \begin{exampleblock}{\textbf{\textcolor{Mahogany}{Proof by induction}}}
-        \begin{itemize}
-            \item Base cases: Using \WhileCC-approximability theorem \Checkmark
-            \item Addition, Multiplication, and Composition: Using \WhileCC-approximability theorem \Checkmark
-        \end{itemize}
-    \end{exampleblock}
+    \vspace{-0.5em}
+    \pause
+    \begin{theorem}
+        Let $f:\Reals\to\Reals$ be \WhileCC-approximable and monotone on its domain. 
+        Then $f$ has a local continuity witness.
+    \end{theorem}
+    \pause
+        {\textbf{\textcolor{OliveGreen}{The notion of effective local uniform continuity is independent
+                of effective open exhaustion.}}}
     \note{Now we need to prove effective local uniform continuity of any elementary function with respect to its domain's effective open exhaustion.
     It is easier for our purposes to use an equivalent definition.
     Intuitively, the existence of a local continuity witness is similar to effective local uniform continuity w.r.t. an effective open exhaustion, except that, instead of the recursive function parameterized by the stage number, it is parameterized by the endpoints of an interval in its domain.\\
