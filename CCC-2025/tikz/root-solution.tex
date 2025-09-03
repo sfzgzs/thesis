@@ -1,26 +1,33 @@
+
 \begin{tikzpicture}
-    \begin{axis}[
-        width = 120,
-        axis lines=middle,
-        xlabel=$x$, ylabel=$f(x)$,
-        samples=200,
-        domain=-3:5,
-        ymin=-1, ymax=3,
-        xmin=-3, xmax=5,
-        grid=both,
-        thick, 
-        xtick =\empty,
-        ytick=\empty
-    ]
+  \begin{axis}[
+    width=\linewidth,
+    axis lines=middle,
+    xlabel=$x$, ylabel=$y$,
+    xmin=-10, xmax=24,      % show x>0 up to 24
+    ymin=-4.5, ymax=8,
+    domain=0:24, samples=300,
+    xtick =\empty, 
+    ytick =\empty, 
+  ]
+    \addplot[name path=upperpink, thick] {sqrt(x) + 2};
+    \addplot[name path=lowerpink, thick] {sqrt(x) - 2};
     
-    % Plot f(x) = 0 for x < 0
-    \addplot[orange, thick, domain=-3:0] {0};
+    \addplot[gray, domain=-10:24] {0};
+    \addplot[blue, thick, domain=-10:0] {0}node[pos=0.92, below left] {$y=0$};
     
-    % Plot f(x) = sqrt(x) for x >= 0
-    \addplot[blue, thick, domain=0:5] {sqrt(x)};
+
+    \addplot[dashed, red, thick] coordinates {(4,-4.5) (4,8)};
     
-    % Closed circle at (0,0) because both pieces agree
-    \addplot[only marks, mark=*, mark size=2pt, violet] coordinates {(0,0)};
+    \addplot[fill=pink!50, draw=none] fill between[of=upperpink and lowerpink];
+    \addplot[blue, very thick] {sqrt(x)}node[pos=0.80, above] {$y=\sqrt{x}$};
     
-    \end{axis}
+    \addplot[only marks, mark=*, mark size=3pt, blue] coordinates {(0,0)};
+    \draw[->, thick, cyan] (axis cs:4,-3) -- (axis cs:-10,-3) node[above right] {compute y = 0};
+    \fill[color=white,draw=cyan,line width=0.7pt] (axis cs:4,-3) circle (3pt);
+    
+    \draw[->, thick, magenta] (axis cs:0,-3.8) -- (axis cs:24,-3.8) node[above left] {approximate $\sqrt{x}$};
+    \fill[color=white,draw=magenta,line width=0.7pt] (axis cs:0,-3.8) circle (3pt);
+
+  \end{axis}
 \end{tikzpicture}

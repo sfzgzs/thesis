@@ -85,6 +85,7 @@
                 \end{cases*}
             \end{align*}
         \setlength{\fboxsep}{0pt}
+        \pause
         \fbox{
         \begin{tabular}{l}
             The Semantics of a program $P$\\
@@ -133,7 +134,7 @@
     \begin{itemize}
         \pause \item $x \in \dom(f) \then \uparrow \notin P^\algebraR(x,n) $ \pause  $\subseteq \Nbd(f(x), 2^{-n})$
             , and
-        \pause \item $x \notin \dom(f) \then P^\algebraR(x)=\{ \uparrow\} $
+        \pause \item $x \notin \dom(f) \then P^\algebraR(x, n)=\{ \uparrow\} $
     \end{itemize}
     \pause where $\Nbd(y,r)$ has the standard definition of neighborhood on $\Reals$ i.e., \[\Nbd(y,r) = \{ z\in \Reals\ \mid \abs{y-z}<r \}.\]
 \end{definition}
@@ -151,7 +152,8 @@
 \end{frame}
 
 \begin{frame}{Result 1 - Challenges}
-    \begin{minipage}[t]{0.4\linewidth}
+\begin{columns}
+    \begin{column}{0.4\linewidth}
         \vspace{-2em}
         \begin{exampleblock}{\color{BrickRed}\textbf{Problem}}
             When defining piecewise functions, comparison makes a hole! 
@@ -177,97 +179,28 @@
                 \FI \\
 
                 }\\
-            \END}\\
+            \END}
         \] 
         \pause
+        \only<4>{
         \begin{flushright}
         % \includegraphics[width=.98\linewidth]{root.png}
-            \vspace{-3em}
-            \pause
+            \vspace{-3.5em}
             \input{tikz/root-attempt1}
-        \end{flushright}
-    \end{minipage}
-    \begin{minipage}[t]{0.50\linewidth}
-      
-              
-    \end{minipage}
-
-\end{frame}
-
-
-\begin{frame}{Result 1 - Challenges}
-    \begin{minipage}[t]{0.4\linewidth}
+        \end{flushright}}
+    \end{column}
+    \pause
+    \begin{column}{0.50\linewidth}
         \vspace{-2em}
-        \begin{exampleblock}{\color{BrickRed}\textbf{Problem}}
-            When defining piecewise functions, comparison makes a hole! 
-        \end{exampleblock}
-        \pause
-        \vspace{0.75em}
-         \begin{exampleblock}{\color{OliveGreen}\textbf{Solution}}
+        \begin{exampleblock}{\color{OliveGreen}\textbf{Solution}}
             \begin{itemize}
                 \pause \item Find an overlapping interval where both pieces are defined
                 \pause \item Use the nondeterminism of ``choose''  
-            \end{itemize}
-            % Assuming we have $\isCloseEnough(q,c,n) \implies \abs{\sqrt[c]{q}} < 2^{-n}$ 
-                       
-        \end{exampleblock}     
-
-    \end{minipage}
-    \begin{minipage}[t]{0.50\linewidth}
-        % \vspace{-2em}
-        \pause
-        {
-        \vspace{-1.5em}
-        \center
-        }
-        \vspace{-1em}
-        \scriptsize
-         \[ 
-            \BLOCK{             
-                \PROC  \\
-                    \INDENT{
-                    \IN \ x:\real\ c:\nat \\
-                    \AUX \chosenVal:\nat\ l:\real}\\
-                \BEGIN \\
-                    \INDENT{
-                    l := \CHOOSE (q:\real) :
-                                        \BLOCK{
-                                        \isCloseEnough(q, c, n)} \\
-                     \\
-                    \chosenVal := \CHOOSE (k : \nat) :
-                            \BLOCK{
-                            \PROC \\
-                                \INDENT{
-                                \IN k:\nat\ x:\real}\\
-                            \BEGIN \\
-                                \INDENT{
-                                \IF k \natEq 1 \THEN \\
-                                    \INDENT{
-                                    \RETURN 0<x}\\
-                                \ELSE \IF k \natEq 2 \THEN \\
-                                    \INDENT{
-                                    \RETURN x<l}\\
-                                \ELSE \\
-                                    \INDENT{
-                                    \RETURN \false}\\
-                                \FI }\\
-                            \END}\\
-                    \IF \chosenVal \natEq 1 \THEN \\
-                        \INDENT{
-                        \RETURN \mathsf{Root}(x,c)}\\
-                    \ELSE \IF \chosenVal \natEq 2 \THEN \\
-                        \INDENT{
-                        \RETURN 0}\\
-                    \FI}\\
-                \END}\\
-            \] 
-        \begin{flushright}
-        % \includegraphics[width=.98\linewidth]{root.png}
-            \vspace{-8.5em}
-            \pause
-            \input{tikz/root-solution}
-        \end{flushright}
-        
-    \end{minipage}
-
+            \end{itemize}                       
+        \end{exampleblock}  
+         \only<8->{   
+        \input{tikz/root-solution.tex}}
+    \end{column}
+\end{columns}
 \end{frame}
+
